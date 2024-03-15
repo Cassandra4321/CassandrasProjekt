@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Test3.Views.ViewsUpperBody.TricepsPage"
+             Title="TricepsPage">
+    <Grid>
+        <ScrollView>
+
+            <VerticalStackLayout
+                Padding="30,60,30,30"
+                Spacing="25"
+                BackgroundColor="#F5F5DC">
+                
+                <ImageButton
+                BackgroundColor="Transparent"
+                WidthRequest="60"
+                HeightRequest="60"
+                Source="homeicon.png"
+                Clicked="OnHomeClicked"
+                VerticalOptions="Start"
+                HorizontalOptions="Start" />
+                
+                <Label 
+                Text="Triceps"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="44"
+                FontFamily="quicksand.light-regular"
+                TextColor="#4A3C32"
+                BackgroundColor="#F5F5DC" />
+
+                <ListView 
+                ItemsSource="{Binding Triceps}" 
+                ItemSelected="OnListViewExerciseSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid 
+                              Padding="10"
+                              RowDefinitions="Auto, *"
+                              ColumnDefinitions="200, *"
+                              ColumnSpacing="20">
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="{Binding Name}"
+                                        FontSize="32"
+                                        FontFamily="quicksand.light-regular"
+                                        TextColor="#4A3C32"></Label>
+                                    <Label 
+                                        Grid.Row="1" 
+                                        Grid.Column="0"
+                                        Text="{Binding Equipment}"
+                                        TextColor="#4A3C32"
+                                        FontFamily="quicksand.light-regular"
+                                        FontSize="15"></Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ImageButton
+                BackgroundColor="Transparent"
+                WidthRequest="60"
+                HeightRequest="60"
+                Source="backicon.png"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Clicked="OnGoBackClicked"/>
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

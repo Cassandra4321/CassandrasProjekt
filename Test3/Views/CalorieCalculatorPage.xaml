@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Test3.Views.CalorieCalculatorPage"
+             Title="CalorieCalculatorPage">
+    <Grid>
+        <ScrollView>
+
+            <VerticalStackLayout
+            Padding="30,60,30,30"
+            Spacing="12"
+            BackgroundColor="#F5F5DC">
+
+                <ImageButton
+                BackgroundColor="Transparent"
+                WidthRequest="60"
+                HeightRequest="60"
+                Source="homeicon.png"
+                Clicked="OnHomeClicked"
+                VerticalOptions="Start"
+                HorizontalOptions="Start" />
+
+                <Label 
+            Text="Pick your exercise"
+            FontFamily="quicksand.light-regular"
+            FontSize="25"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+        <Button
+            Text="Weight lifting"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Running"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Walking"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Dancing"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Yoga"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Boxing"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Golf"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Horseback"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Skiing"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <Button
+            Text="Swimming"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            FontFamily="quicksand.light-regular"
+            FontSize="17"
+            BackgroundColor="#4A3C32"
+            TextColor="#F8F8F4"
+            Clicked="OnExerciseClicked"/>
+
+        <ImageButton
+            BackgroundColor="Transparent"
+            WidthRequest="60"
+            HeightRequest="60"
+            Source="backicon.png"
+            Clicked="OnGoBackClicked"
+            VerticalOptions="End"
+            HorizontalOptions="Start" />
+
+
+
+      </VerticalStackLayout>
+
+       </ScrollView>
+    </Grid>
+</ContentPage>

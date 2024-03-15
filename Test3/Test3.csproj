@@ -1,0 +1,221 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Test3</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>Test3</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.test3</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\quicksand.light-regular.otf" />
+	  <None Remove="Resources\Images\activityatlas.png" />
+	  <None Remove="Resources\Images\back.png" />
+	  <None Remove="Resources\Images\backextension.gif" />
+	  <None Remove="Resources\Images\background.png" />
+	  <None Remove="Resources\Images\backicon.png" />
+	  <None Remove="Resources\Images\barbellcurl.gif" />
+	  <None Remove="Resources\Images\barbellsquat.gif" />
+	  <None Remove="Resources\Images\benchpress.gif" />
+	  <None Remove="Resources\Images\bentoverlateralraises.gif" />
+	  <None Remove="Resources\Images\brightbluebackground.png" />
+	  <None Remove="Resources\Images\bulgariansplitsquat.gif" />
+	  <None Remove="Resources\Images\cablecrossover.gif" />
+	  <None Remove="Resources\Images\cablesquat.gif" />
+	  <None Remove="Resources\Images\calfraises.gif" />
+	  <None Remove="Resources\Images\chestfly.gif" />
+	  <None Remove="Resources\Images\goodmornings.gif" />
+	  <None Remove="Resources\Images\hammercurl.gif" />
+	  <None Remove="Resources\Images\hipabduction.gif" />
+	  <None Remove="Resources\Images\homeicon.png" />
+	  <None Remove="Resources\Images\legextension.gif" />
+	  <None Remove="Resources\Images\legpress.gif" />
+	  <None Remove="Resources\Images\lyinglegcurl.gif" />
+	  <None Remove="Resources\Images\overheadtricep.gif" />
+	  <None Remove="Resources\Images\pinkbackground.png" />
+	  <None Remove="Resources\Images\pinkwaterbackground.png" />
+	  <None Remove="Resources\Images\pistolsquat.gif" />
+	  <None Remove="Resources\Images\pushdown.gif" />
+	  <None Remove="Resources\Images\reardeltflies.gif" />
+	  <None Remove="Resources\Images\romaniandeadlift.gif" />
+	  <None Remove="Resources\Images\seatedlegcurl.gif" />
+	  <None Remove="Resources\Images\shoulderpress.gif" />
+	  <None Remove="Resources\Images\singlelegcalfraises.gif" />
+	  <None Remove="Resources\Images\skullcrusher.gif" />
+	  <None Remove="Resources\Images\straightlegdeadlift.gif" />
+	  <None Remove="Resources\Images\sumosquat.gif" />
+	  <None Remove="Resources\Images\tricepdips.gif" />
+	  <None Remove="Resources\Images\uppercablecrossover.gif" />
+	  <None Remove="Resources\Images\uprightrow.gif" />
+	  <None Remove="Resources\Images\walkinglunges.gif" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\CalorieCalculatorPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CalorieCalculatorPage2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ExercisesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LowerBodyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\UpperBodyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsLowerBody\CalvesDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsLowerBody\CalvesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsLowerBody\GlutesDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsLowerBody\GlutesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsLowerBody\HamstringsDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsLowerBody\HamstringsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsLowerBody\QuadsDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsLowerBody\QuadsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\BackDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\BackPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\BicepsDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\BicepsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\ChestDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\ChestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\ShouldersDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\ShouldersPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\TricepsDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ViewsUpperBody\TricepsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Back\back.png" />
+	  <MauiImage Include="Resources\Images\Back\backextension.gif" />
+	  <MauiImage Include="Resources\Images\Back\deadlift.gif" />
+	  <MauiImage Include="Resources\Images\Back\dumbbellrow.gif" />
+	  <MauiImage Include="Resources\Images\Back\facepull.gif" />
+	  <MauiImage Include="Resources\Images\Back\latpulldown.gif" />
+	  <MauiImage Include="Resources\Images\Back\pullup.gif" />
+	  <MauiImage Include="Resources\Images\Biceps\barbellcurl.gif" />
+	  <MauiImage Include="Resources\Images\Biceps\dumbbellcurl.gif" />
+	  <MauiImage Include="Resources\Images\Biceps\hammercurl.gif" />
+	  <MauiImage Include="Resources\Images\Calves\calfraises.gif" />
+	  <MauiImage Include="Resources\Images\Calves\singlelegcalfraises.gif" />
+	  <MauiImage Include="Resources\Images\Chest\benchpress.gif" />
+	  <MauiImage Include="Resources\Images\Chest\cablecrossover.gif" />
+	  <MauiImage Include="Resources\Images\Chest\chestfly.gif" />
+	  <MauiImage Include="Resources\Images\Chest\uppercablecrossover.gif" />
+	  <MauiImage Include="Resources\Images\Glutes\bulgariansplitsquat.gif" />
+	  <MauiImage Include="Resources\Images\Glutes\cablesquat.gif" />
+	  <MauiImage Include="Resources\Images\Glutes\hipabduction.gif" />
+	  <MauiImage Include="Resources\Images\Glutes\romaniandeadlift.gif" />
+	  <MauiImage Include="Resources\Images\Glutes\sumosquat.gif" />
+	  <MauiImage Include="Resources\Images\Hamstrings\goodmornings.gif" />
+	  <MauiImage Include="Resources\Images\Hamstrings\lyinglegcurl.gif" />
+	  <MauiImage Include="Resources\Images\Hamstrings\seatedlegcurl.gif" />
+	  <MauiImage Include="Resources\Images\Hamstrings\straightlegdeadlift.gif" />
+	  <MauiImage Include="Resources\Images\Quads\barbellsquat.gif" />
+	  <MauiImage Include="Resources\Images\Quads\legextension.gif" />
+	  <MauiImage Include="Resources\Images\Quads\legpress.gif" />
+	  <MauiImage Include="Resources\Images\Quads\pistolsquat.gif" />
+	  <MauiImage Include="Resources\Images\Quads\walkinglunges.gif" />
+	  <MauiImage Include="Resources\Images\Shoulders\bentoverlateralraises.gif" />
+	  <MauiImage Include="Resources\Images\Shoulders\reardeltflies.gif" />
+	  <MauiImage Include="Resources\Images\Shoulders\shoulderpress.gif" />
+	  <MauiImage Include="Resources\Images\Shoulders\uprightrow.gif" />
+	  <MauiImage Include="Resources\Images\Triceps\overheadtricep.gif" />
+	  <MauiImage Include="Resources\Images\Triceps\pushdown.gif" />
+	  <MauiImage Include="Resources\Images\Triceps\skullcrusher.gif" />
+	  <MauiImage Include="Resources\Images\Triceps\tricepdips.gif" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Test3.Views.CalorieCalculatorPage2"
+             Title="CalorieCalculatorPage2">
+    <Grid>
+        <ScrollView>
+
+            <VerticalStackLayout
+            Padding="30,60,30,30"
+            Spacing="12"
+            BackgroundColor="#F5F5DC">
+
+                <ImageButton
+                BackgroundColor="Transparent"
+                WidthRequest="60"
+                HeightRequest="60"
+                Source="homeicon.png"
+                Clicked="OnHomeClicked"
+                VerticalOptions="Start"
+                HorizontalOptions="Start" />
+
+                <Label Text="For how many minutes did you perform this exercise?"
+               TextColor="#4A3C32"
+               FontSize="19"
+               FontFamily="quicksand.light-regular"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+                
+        <Entry x:Name="duration_minutes"
+               Placeholder="minutes"
+               FontFamily="quicksand.light-regular"
+               TextColor="Black"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+        
+        <Button Text="Calculate"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                FontFamily="quicksand.light-regular"
+                FontSize="19"
+                BackgroundColor="#4A3C32"
+                TextColor="#F8F8F4"
+                Clicked="OnCalculateClicked"/>
+
+        <ListView x:Name="resultListView"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label 
+                                Text="{Binding name}"
+                                TextColor="#4A3C32"
+                                FontSize="19"
+                                FontFamily="quicksand.light-regular"
+                                FontAttributes="Bold"/>
+                            <Label
+                                Text="{Binding calories_per_hour, StringFormat='Calories per hour: {0}'}" 
+                                TextColor="#4A3C32"
+                                FontSize="17"
+                                FontFamily="quicksand.light-regular"/>
+
+                            <Label 
+                                Text="{Binding total_calories, StringFormat='Total calories that you have burnt: {0}'}"
+                                TextColor="#4A3C32"
+                                FontSize="17"
+                                FontFamily="quicksand.light-regular"/>
+
+                                </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label x:Name="errorLabel"
+               Text=""
+               TextColor="Red"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"/>
+
+                <ImageButton
+            BackgroundColor="Transparent"
+            WidthRequest="60"
+            HeightRequest="60"
+            Source="backicon.png"
+            Clicked="OnGoBackClicked"
+            VerticalOptions="End"
+            HorizontalOptions="Start" />
+
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+    </Grid>
+</ContentPage>
